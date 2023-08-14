@@ -14,6 +14,16 @@ public class Transparent_ObjectInTheWay : MonoBehaviour
         
         cam = gameObject.transform;
     }
+    private void Start() {
+        DebugError();
+    }
+    private void DebugError()
+    {
+        if(object_InTheWay_List == null) Debug.LogError("List object_InTheWay_List di Transparent_ObjectInTheWay belum di new List nama" + gameObject.name);
+        if(object_Transparent_List == null) Debug.LogError("List object_Transparent_List di Transparent_ObjectInTheWay belum di new List nama" + gameObject.name);
+        if(!cam) Debug.LogError("Transform cam masih kosong di Transparent_ObjectInTheWay nama" + gameObject.name);
+        if(!player) Debug.LogError("Transform player masih kosong di Transparent_ObjectInTheWay nama" + gameObject.name);
+    }
     
     private void Update()
     {
@@ -35,7 +45,7 @@ public class Transparent_ObjectInTheWay : MonoBehaviour
         {
             if(rayHit.collider.gameObject.TryGetComponent(out Object_InTheWay hit))
             {
-                Debug.Log(hit);
+                // Debug.Log(hit);
                 if(!object_InTheWay_List.Contains(hit)) object_InTheWay_List.Add(hit);
                 
             }
@@ -44,7 +54,7 @@ public class Transparent_ObjectInTheWay : MonoBehaviour
         {
             if(rayHit.collider.gameObject.TryGetComponent(out Object_InTheWay hit))
             {
-                Debug.Log(hit);
+                // Debug.Log(hit);
                 if(!object_InTheWay_List.Contains(hit)) object_InTheWay_List.Add(hit);
             }
         }

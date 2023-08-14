@@ -27,4 +27,9 @@ public class GameInput : MonoBehaviour
         else if(Input.GetKey(KeyCode.A)) return DirectionMovement.Left;
         return DirectionMovement.None;
     }
+
+    public bool GetInputPause()
+    {
+        return Input.GetKeyDown(KeyCode.Escape);
+    }
 }
