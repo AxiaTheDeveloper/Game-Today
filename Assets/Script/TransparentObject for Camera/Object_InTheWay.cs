@@ -5,6 +5,7 @@ using UnityEngine;
 public class Object_InTheWay : MonoBehaviour
 {
     [SerializeField]private GameObject solid, transparent;
+
     private void Awake() 
     {
         if(!solid) solid = gameObject.transform.GetChild(0).gameObject;
@@ -24,7 +25,6 @@ public class Object_InTheWay : MonoBehaviour
         solid.SetActive(true);
         transparent.SetActive(false);
     }
-
     public void InTheWay()
     {
         solid.SetActive(false);

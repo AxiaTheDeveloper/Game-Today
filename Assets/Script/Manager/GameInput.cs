@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameInput : MonoBehaviour
 {
     public static GameInput Instance{get;private set;}
+
     public enum DirectionMovement
     {
         Left,Right,None
@@ -20,14 +21,13 @@ public class GameInput : MonoBehaviour
         
         return 0;
     }
-
     public DirectionMovement GetInputMovement()
     {
         if(Input.GetKey(KeyCode.D)) return DirectionMovement.Right;
         else if(Input.GetKey(KeyCode.A)) return DirectionMovement.Left;
+        
         return DirectionMovement.None;
     }
-
     public bool GetInputPause()
     {
         return Input.GetKeyDown(KeyCode.Escape);

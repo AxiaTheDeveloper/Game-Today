@@ -51,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Move();
     }
-
     private void GetDirection()
     {
         if(gameInput.GetInputMovement() == GameInput.DirectionMovement.Left)
@@ -69,7 +68,6 @@ public class PlayerMovement : MonoBehaviour
             directionMove = 0f;
         }
     }
-
     private void Move()
     {
         Vector3 cameraHorizontalMovement = transform.right;

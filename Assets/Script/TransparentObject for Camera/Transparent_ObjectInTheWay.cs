@@ -7,6 +7,7 @@ public class Transparent_ObjectInTheWay : MonoBehaviour
     private List<Object_InTheWay> object_InTheWay_List, object_Transparent_List;
     [SerializeField]private Transform player;
     private Transform cam;
+    
     private void Awake()
     {
         object_InTheWay_List = new List<Object_InTheWay>();
@@ -24,7 +25,6 @@ public class Transparent_ObjectInTheWay : MonoBehaviour
         if(!cam) Debug.LogError("Transform cam masih kosong di Transparent_ObjectInTheWay nama" + gameObject.name);
         if(!player) Debug.LogError("Transform player masih kosong di Transparent_ObjectInTheWay nama" + gameObject.name);
     }
-    
     private void Update()
     {
         GetAllObjectInTheWay();
