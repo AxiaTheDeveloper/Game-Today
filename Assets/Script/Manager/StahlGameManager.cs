@@ -23,8 +23,14 @@ public class StahlGameManager : MonoBehaviour
     }
     private void Start() {
         gameInput = GameInput.Instance;
-        state = GameState.Start;
+        StartCoroutine(StartGame());
+        
         DebugError();
+    }
+    private IEnumerator StartGame()
+    {
+        yield return new WaitForSeconds(0.1f);
+        state = GameState.Start;
     }
     private void DebugError()
     {

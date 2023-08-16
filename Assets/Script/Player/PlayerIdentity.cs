@@ -7,17 +7,12 @@ public enum CharacterType
     Sword, Arrow
 }
 
-public enum AttackType
-{
-    Melee, Range
-}
 public class PlayerIdentity : MonoBehaviour
 {
     private StahlGameManager gameManager;
 
-    [SerializeField]private CharacterType characterType;
-    [SerializeField]private AttackType attackType;
     [SerializeField]private string characterName;
+    [SerializeField]private CharacterType characterType;
     [SerializeField]private float health;
 
     private void Start()
@@ -39,4 +34,9 @@ public class PlayerIdentity : MonoBehaviour
         }
         
     }
+    public CharacterType GetCharacterType()
+    {
+        return characterType;
+    }
+    
 }

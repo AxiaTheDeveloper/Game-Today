@@ -11,8 +11,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
 
     [Header("Player Movement")]
-    private float directionMove;
+    private float directionMove, lastDirectionMove = 1f;
     [SerializeField]private float moveSpeed;
+    private Vector3 cameraHorizontalMovement;
     [Header("Player Sprite Rotation")]
     private Transform visualGameObject;
     
@@ -44,7 +45,10 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if(directionMove != 0) directionMove = 0f;
+            if(directionMove != 0){
+                lastDirectionMove = directionMove;
+                directionMove = 0f;
+            }
         }
     }
     private void FixedUpdate()
@@ -57,23 +61,31 @@ public class PlayerMovement : MonoBehaviour
         {
             visualGameObject.localScale = new Vector3(-1f, 1f, 1f);
             directionMove = -1f;
+            lastDirectionMove = directionMove;
         }
         else if(gameInput.GetInputMovement() == GameInput.DirectionMovement.Right)
         {
             visualGameObject.transform.localScale = new Vector3(1f, 1f, 1f);
             directionMove = 1f;
+            lastDirectionMove = directionMove;
         }
         else if(gameInput.GetInputMovement() == GameInput.DirectionMovement.None)
         {
+            if(directionMove != 0)lastDirectionMove = directionMove;
             directionMove = 0f;
         }
     }
     private void Move()
     {
-        Vector3 cameraHorizontalMovement = transform.right;
+        cameraHorizontalMovement = transform.right;
         cameraHorizontalMovement.y = 0f;
         cameraHorizontalMovement = cameraHorizontalMovement.normalized;
         rb.MovePosition(rb.position + cameraHorizontalMovement * directionMove * moveSpeed * Time.fixedDeltaTime);
+    }
+    public Vector3 GetLastDirectionMove()
+    {
+        // Debug.Log(lastDirectionMove);
+        return lastDirectionMove * cameraHorizontalMovement;
     }
 
 }

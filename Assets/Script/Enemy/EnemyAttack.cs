@@ -33,7 +33,7 @@ public class EnemyAttack : MonoBehaviour
     }
     private void AttackPlayer()
     {
-        if(canAttack)
+        if(canAttack && playerIdentity)
         {
             playerIdentity.ChangePlayerHealth(-enemyAttackDamage);
             canAttack = false;
@@ -47,7 +47,6 @@ public class EnemyAttack : MonoBehaviour
         {
             playerIdentity = other.GetComponent<PlayerIdentity>();
             canAttack = true;
-            
         }
     }
     private void OnTriggerExit(Collider other) 

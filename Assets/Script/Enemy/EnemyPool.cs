@@ -20,6 +20,7 @@ public class EnemyPool : MonoBehaviour
 
     private void Awake() 
     {
+        if(!player) player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         spawnArea = GetComponent<Collider>();
         enemies = new List<Transform>();
         CreatePool();
@@ -40,7 +41,6 @@ public class EnemyPool : MonoBehaviour
     {
         for(int i=0;i<totalEnemySpawned;i++)
         {
-            // Transform chosenEnemy = enemyPrefabs[Random.Range(0,enemyPrefabs.Length)];
             Transform enemy = Instantiate(enemyPrefab, this.gameObject.transform);
             enemy.gameObject.SetActive(false);
             if(!isGroupEnemy)
@@ -59,7 +59,6 @@ public class EnemyPool : MonoBehaviour
                     enemy.GetChild(j).position = enemy.GetChild(j).GetComponent<EnemyIdentity>().GetStartPosition();
                     enemy.GetChild(j).rotation = Quaternion.Euler(0f,0f,0f);
                 }
-
             }
             enemies.Add(enemy);
         }
