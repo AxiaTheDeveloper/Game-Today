@@ -50,6 +50,7 @@ public class EnemyIdentity : MonoBehaviour
         if(isAlive && health == 0)
         {
             isAlive = false;
+            PlayerIdentity.Instance.AddEnemyTotalDead();
             LeanTween.color(visualGameObject.gameObject, new Color(1,1,1,0), 0.5f).setOnComplete(
                 ()=> Dead1()
             );   

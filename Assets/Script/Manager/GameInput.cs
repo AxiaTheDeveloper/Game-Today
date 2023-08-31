@@ -32,4 +32,8 @@ public class GameInput : MonoBehaviour
     {
         return Input.GetKeyDown(KeyCode.Escape);
     }
+    public bool GetInputRestart()
+    {
+        return Input.GetKeyDown(KeyCode.Return);
+    }
 }

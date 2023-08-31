@@ -72,7 +72,7 @@ public class ShootObject : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject);
+        // Debug.Log(other.gameObject);
         if(other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log(other.gameObject);
@@ -81,7 +81,7 @@ public class ShootObject : MonoBehaviour
         }
         if(other.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log("nabrak tembok");
+            // Debug.Log("nabrak tembok");
             gameObject.SetActive(false);
             OnDurationFinished?.Invoke(this, EventArgs.Empty);
             
